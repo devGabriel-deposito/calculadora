@@ -1,0 +1,26 @@
+.alinhamento {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+input {
+    text-align: end;
+}
+
+.btn-zero {
+    font-size: 24px;
+    width: 130px;
+}
+
+.btn-padrao {
+    font-size: 24px;
+    width: 50px;
+}
+
+#result {
+    width: 290px;
+}
