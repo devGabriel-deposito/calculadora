@@ -2,7 +2,7 @@ var firstNumber = 0
 var secondNumber = 0
 var virg = false
 
-var lastOperation = 'so'
+var lastOperation = ''
 
 
 $(document).ready(function () {
@@ -17,8 +17,8 @@ function formatAndSet(sNum) {
     var bTem = false
     var nHou = 1
 
-    if (typeof(sNum) == 'number') sNum = sNum.toString()
-    
+    if (typeof (sNum) == 'number') sNum = sNum.toString()
+
     for (var num = (sNum.length - 1); num >= 0; num--) if (sNum[num] == ',') bTem
 
     if (bTem == true) {
@@ -55,6 +55,7 @@ function cls() {
     firstNumber = 0
     secondNumber = 0
     virg = false
+    lastOperation = ''
     formatAndSet(secondNumber)
 }
 
@@ -74,27 +75,88 @@ function enter() {
     }
 
     else if (lastOperation != '') {
-        if (lastOperation == 'so') { firstNumber = parseFloat(firstNumber) + parseFloat(secondNumber) }
-        else if (lastOperation == 'su') { firstNumber = parseFloat(firstNumber) - parseFloat(secondNumber) }
-        else if (lastOperation == 'mu') { firstNumber = parseFloat(firstNumber) * parseFloat(secondNumber) }
-        else if (lastOperation == 'di') { firstNumber = parseFloat(firstNumber) / parseFloat(secondNumber) }
+        if (lastOperation == 'so') firstNumber = parseFloat(firstNumber) + parseFloat(secondNumber)
+        else if (lastOperation == 'su') firstNumber = parseFloat(firstNumber) - parseFloat(secondNumber)
+        else if (lastOperation == 'mu') firstNumber = parseFloat(firstNumber) * parseFloat(secondNumber)
+        else if (lastOperation == 'di') firstNumber = parseFloat(firstNumber) / parseFloat(secondNumber)
 
         secondNumber = firstNumber
     }
 
     formatAndSet(secondNumber)
+
+    virg = false
 }
 
+function som() {
+    if (lastOperation == '') {
+        firstNumber = secondNumber
+        secondNumber = '0'
+    }
+
+    else if (lastOperation != '') {
+        if (lastOperation == 'so') firstNumber = parseFloat(firstNumber) + parseFloat(secondNumber)
+
+        secondNumber = firstNumber
+    }
+
+    formatAndSet(secondNumber)
+    lastOperation = 'so'
+}
+function sub() {
+    if (lastOperation == '') {
+        firstNumber = secondNumber
+        secondNumber = '0'
+    }
+
+    else if (lastOperation != '') {
+        firstNumber = parseFloat(firstNumber) - parseFloat(secondNumber)
+        secondNumber = firstNumber
+    }
+
+    formatAndSet(secondNumber)
+    lastOperation = 'su'
+}
+function mul() {
+    if (lastOperation == '') {
+        firstNumber = secondNumber
+        secondNumber = '0'
+    }
+
+    else if (lastOperation != '') {
+        firstNumber = parseFloat(firstNumber) * parseFloat(secondNumber)
+        secondNumber = firstNumber
+    }
+
+    formatAndSet(secondNumber)
+    lastOperation = 'mu'
+}
+function div() {
+    if (lastOperation == '') {
+        firstNumber = secondNumber
+        secondNumber = '0'
+    }
+
+    else if (lastOperation != '') {
+        firstNumber = parseFloat(firstNumber) / parseFloat(secondNumber)
+        secondNumber = firstNumber
+    }
+
+    formatAndSet(secondNumber)
+    lastOperation = 'di'
+}
+
+/*
 function virgula() {
     if (virg == false) {
         secondNumber = secondNumber.toString()
-        secondNumber += '.'
-        secondNumber = parseFloat(secondNumber)
+        secondNumber += ','
         virg = true
     }
 
     formatAndSet(secondNumber)
 }
+*/
 
 function btn0() {
     if (secondNumber != 0) {
