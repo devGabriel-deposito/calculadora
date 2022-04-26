@@ -78,7 +78,6 @@ function enter() {
     }
 
     formatAndSet(secondNumber)
-
     virg = false
 }
 
