@@ -1,14 +1,9 @@
 var firstNumber = 0
 var secondNumber = 0
 var virg = false
-
 var lastOperation = ''
 
-
-$(document).ready(function () {
-    $('#result').val(0)
-})
-
+$(document).ready(function () { $('#result').val(0) })
 
 function formatAndSet(sNum) {
     var sBkp = ''
@@ -59,7 +54,6 @@ function cls() {
     formatAndSet(secondNumber)
 }
 
-
 function backspace() {
     secondNumber = secondNumber.toString()
     secondNumber = secondNumber.substring(0, secondNumber.length - 1)
@@ -103,6 +97,7 @@ function som() {
     formatAndSet(secondNumber)
     lastOperation = 'so'
 }
+
 function sub() {
     if (lastOperation == '') {
         firstNumber = secondNumber
@@ -117,6 +112,7 @@ function sub() {
     formatAndSet(secondNumber)
     lastOperation = 'su'
 }
+
 function mul() {
     if (lastOperation == '') {
         firstNumber = secondNumber
@@ -131,6 +127,7 @@ function mul() {
     formatAndSet(secondNumber)
     lastOperation = 'mu'
 }
+
 function div() {
     if (lastOperation == '') {
         firstNumber = secondNumber
@@ -175,7 +172,6 @@ function btn1() {
         formatAndSet(secondNumber)
     }
 }
-
 
 function btn2() {
     if (secondNumber == 0) {
